@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        #time {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .digit, .txt {
+            margin: 0 5px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            gap: 15px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: black;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background:black;
+        }
+        #laps {
+            margin-top: 20px;
+            width: 100%;
+            text-align: left;
+        }
+        .lap-item {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin: 5px 0;
+        }
+        #clock {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border: 10px solid #007bff;
+            border-radius: 50%;
+            margin-top: 20px;
+        }
+        #clock:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: #007bff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .hand {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background: #007bff;
+            border-radius: 2px;
+        }
+        .hand.hour {
+            width: 6px;
+            height: 50px;
+            transform: translate(-50%, -100%);
+            animation: rotate 43200s linear infinite;
+        }
+        .hand.minute {
+            width: 4px;
+            height: 70px;
+            transform: translate(-50%, -100%);
+            animation: rotate 3600s linear infinite;
+        }
+        .hand.second {
+            width: 2px;
+            height: 50px;
+            transform: translate(-50%, -100%);
+            background: red;
+            animation: rotate 60s linear infinite;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg) translate(-50%, -100%);
+            }
+            to {
+                transform: rotate(360deg) translate(-50%, -100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="time"> 
+            <span class="digit" id="hr">00</span> 
+            <span class="txt">Hr</span> 
+            <span class="digit" id="min">00</span> 
+            <span class="txt">Min</span> 
+            <span class="digit" id="sec">00</span> 
+            <span class="txt">Sec</span> 
+            <span class="digit" id="count">00</span> 
+        </div> 
+        <div class="buttons">
+            <button type="button" class="btn" id="start">Start</button>
+            <button type="button" class="btn" id="stop">Stop</button>
+            <button type="button" class="btn" id="reset">Reset</button>
+            <button type="button" class="btn" id="lapsBtn">Laps</button>
+        </div>
+        <div id="laps"></div>
+        <div id="clock">
+            <div class="hand hour"></div>
+            <div class="hand minute"></div>
+            <div class="hand second"></div>
+        </div>
+    </div>
+    <script src="scriptsw.js"></script>
+</body>
+</html>
+
+
